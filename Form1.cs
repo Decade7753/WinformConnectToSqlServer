@@ -23,24 +23,46 @@ namespace WinFormConnectToSqlServer_Project
         {
             #region NoticeUesrToInput
             if (String.IsNullOrEmpty(accountText.Text))
+            {
                 MessageBox.Show("请输入账号");
-            else
                 return;
+            }
+                
             if (String.IsNullOrEmpty(passwordText.Text))
+            {
                 MessageBox.Show("请输入密码");
-            else
                 return;
+            }
+
             #endregion
 
-
-            using (MyDbContext database = new MyDbContext())
+            //提前声明好一个数据库的存储
+            Task.Run(() =>
             {
-                List<ModelForEF> result = database.modelForEfInfo.Where(m => m.username == accountText.Text && m.password == passwordText.Text).ToList();
-                if(result.Count == 1)
-                    MessageBox.Show("登录成功");
-                else
-                    MessageBox.Show("登录失败");
-            }
+                using (MyDbContext database = new MyDbContext())
+                {
+                    //查询数据 
+                    ModelForEF result = database.modelForEfInfo.FirstOrDefault(u => u.username == accountText.Text && u.password == passwordText.Text);
+                    if(result == null)
+                    {
+                        Invoke(new Action(() =>
+                        {
+                            MessageBox.Show("用户名或密码错误" );
+                        }));
+                    }
+                    else
+                    {
+                        //查询到数据
+                        Invoke(new Action(() =>
+                        {
+                            MessageBox.Show("欢迎你，" + result.nickname);
+                        }));
+                    }
+                }
+            });
+            
+                
+            
         }
     }
 }
