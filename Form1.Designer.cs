@@ -33,23 +33,28 @@
             this.accountText = new System.Windows.Forms.TextBox();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.searchBut = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // account
             // 
             this.account.AutoSize = true;
-            this.account.Location = new System.Drawing.Point(11, 99);
+            this.account.Font = new System.Drawing.Font("千图小兔体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.account.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.account.Location = new System.Drawing.Point(0, 93);
             this.account.Name = "account";
-            this.account.Size = new System.Drawing.Size(29, 12);
+            this.account.Size = new System.Drawing.Size(50, 24);
             this.account.TabIndex = 0;
             this.account.Text = "账号";
             // 
             // password
             // 
             this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(11, 148);
+            this.password.Font = new System.Drawing.Font("千图小兔体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.password.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.password.Location = new System.Drawing.Point(0, 143);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(29, 12);
+            this.password.Size = new System.Drawing.Size(50, 24);
             this.password.TabIndex = 1;
             this.password.Text = "密码";
             // 
@@ -70,6 +75,8 @@
             // 
             // searchBut
             // 
+            this.searchBut.Font = new System.Drawing.Font("千图小兔体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.searchBut.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.searchBut.Location = new System.Drawing.Point(152, 99);
             this.searchBut.Name = "searchBut";
             this.searchBut.Size = new System.Drawing.Size(131, 68);
@@ -78,11 +85,24 @@
             this.searchBut.UseVisualStyleBackColor = true;
             this.searchBut.Click += new System.EventHandler(this.searchBut_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("千图小兔体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Location = new System.Drawing.Point(6, 241);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 42);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "注册";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 292);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBut);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.accountText);
@@ -102,6 +122,7 @@
         private System.Windows.Forms.TextBox accountText;
         private System.Windows.Forms.TextBox passwordText;
         private System.Windows.Forms.Button searchBut;
+        private System.Windows.Forms.Label label1;
     }
 }
 
