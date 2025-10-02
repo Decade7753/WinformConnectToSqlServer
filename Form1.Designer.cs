@@ -102,6 +102,7 @@
             this.label1.Size = new System.Drawing.Size(88, 42);
             this.label1.TabIndex = 5;
             this.label1.Text = "注册";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 

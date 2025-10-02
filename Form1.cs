@@ -64,5 +64,11 @@ namespace WinFormConnectToSqlServer_Project
                 
             
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            RegisterForm reg = new RegisterForm();
+            reg.ShowDialog();
+        }
     }
 }
