@@ -15,6 +15,7 @@ namespace WinFormConnectToSqlServer_Project
     {
         public Form1()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
             //把所有的控件都初始化
             InitializeComponent();
         }
@@ -37,32 +38,28 @@ namespace WinFormConnectToSqlServer_Project
             #endregion
 
             //提前声明好一个数据库的存储
-            Task.Run(() =>
+            using (MyDbContext database = new MyDbContext())
             {
-                using (MyDbContext database = new MyDbContext())
+                //查询数据 
+                ModelForEF result = database.modelForEfInfo.FirstOrDefault(u => u.username == accountText.Text && u.password == passwordText.Text);
+                if (result == null)
                 {
-                    //查询数据 
-                    ModelForEF result = database.modelForEfInfo.FirstOrDefault(u => u.username == accountText.Text && u.password == passwordText.Text);
-                    if(result == null)
+                    Invoke(new Action(() =>
                     {
-                        Invoke(new Action(() =>
-                        {
-                            MessageBox.Show("用户名或密码错误" );
-                        }));
-                    }
-                    else
-                    {
-                        //查询到数据
-                        Invoke(new Action(() =>
-                        {
-                            MessageBox.Show("欢迎你，" + result.nickname);
-                        }));
-                    }
+                        MessageBox.Show("用户名或密码错误");
+                    }));
                 }
-            });
-            
-                
-            
+                else
+                {
+                    //查询到数据
+                    ShowInfoForm showInfo = new ShowInfoForm(result);
+                    showInfo.Show();
+                    this.Hide();
+                }
+            }
+
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
